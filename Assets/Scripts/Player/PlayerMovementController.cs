@@ -8,17 +8,17 @@ public class PlayerMovementController : MonoBehaviour
 
     void Update()
     {
-        TouchPosition touchPosition = TouchHandler.GetTouchPosition();
-        if(touchPosition == TouchPosition.Right)
+        Direction playerMovementDirection = InputHandler.GetPlayerMovementDirection();
+        if(playerMovementDirection == Direction.Right)
         {
-            transform.Translate(moveSpeedToSide * Vector3.right, Space.World);
+            transform.Translate(moveSpeedToSide, 0f, 0f, Space.World);
             transform.Rotate(0f, rotationSpeed, 0f);
         }
-        else if (touchPosition == TouchPosition.Left)
+        else if (playerMovementDirection == Direction.Left)
         {
-           transform.Translate(moveSpeedToSide * Vector3.left, Space.World);
-           transform.Rotate(0f, -rotationSpeed, 0f);
+            transform.Translate(-moveSpeedToSide, 0f, 0f, Space.World);
+            transform.Rotate(0f, -rotationSpeed, 0f);
         }
-        transform.Translate(moveSpeedToForward * Vector3.forward, Space.World);
+        transform.Translate(0f, 0f, moveSpeedToForward, Space.World);
     }
 }

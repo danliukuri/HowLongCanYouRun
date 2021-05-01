@@ -2,11 +2,16 @@
 
 public class ShieldController : MonoBehaviour
 {
+    #region Properties
+    public GameObject Player { get => player; set => player = value; }
+    #endregion
+
     #region Fields
     [SerializeField] GameObject burst;
     [SerializeField] GameObject burstOnPlayer;
     [SerializeField] GameObject player;
     [SerializeField] GameObject obstacleBurst;
+    [SerializeField] GameObject foldIntoOneWhole;
 
     bool isShieldOnPlayer;
     MeshRenderer meshRenderer;
@@ -25,6 +30,9 @@ public class ShieldController : MonoBehaviour
         playerTransform = player.transform;
         playerRigidbody = player.GetComponent<Rigidbody>();
         playerBonuses = player.GetComponent<PlayerBonuses>();
+
+        foldIntoOneWhole.GetComponent<ParticleAttractor>().Target = playerTransform;
+        foldIntoOneWhole.GetComponent<ParticleSystem>().trigger.SetCollider(0, playerTransform);
     }
     void OnCollisionEnter(Collision collision)
     {
@@ -79,6 +87,7 @@ public class ShieldController : MonoBehaviour
     void CauseBurstOnPlayer(Transform obstacle)
     {
         burstOnPlayer.SetActive(true);
+        playerBonuses.HasShield = false;
 
         Instantiate(obstacleBurst, obstacle.position, obstacle.rotation);
         Destroy(obstacle.gameObject);

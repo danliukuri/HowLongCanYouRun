@@ -1,15 +1,19 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class TrackSpawner : MonoBehaviour
 {
     #region Fields
-    [SerializeField] ObstacleSpawner obstacleSpawner;
     [SerializeField] Transform player;
-    [SerializeField] Transform track;
-
+    [Header("Inner spawners")]
+    [SerializeField] ObstacleSpawner obstacleSpawner;
+    [SerializeField] List<ShieldSpawner> bonusSpawners;
+    [Header("Parts of the track")]
+    [Tooltip("A transform that will be the parent of all spawned objects")]
+    [SerializeField] Transform partsOfTheTrack;
     [SerializeField] GameObject startingTrackPart;
-    [SerializeField] Transform startingObstacleTrack;
     [SerializeField] GameObject trackPart;
+    [SerializeField] Transform startingObstacleTrack;
 
     Quaternion trackPartRotation;
     Vector3 trackPartPosition;
@@ -42,8 +46,10 @@ public class TrackSpawner : MonoBehaviour
     {
         previousTrackPartPositionZ = trackPartPosition.z;
         trackPartPosition.z += trackPartLengthZ;
-        Transform currentTrackPart = Instantiate(trackPart, trackPartPosition, trackPartRotation, track).transform;
+        Transform currentTrackPart = Instantiate(trackPart, trackPartPosition, trackPartRotation, partsOfTheTrack).transform;
         obstacleSpawner.Spawn(currentTrackPart);
+        for (int i = 0; i < bonusSpawners.Count; i++)
+            bonusSpawners[i].Spawn(currentTrackPart);
     }
     #endregion
 }

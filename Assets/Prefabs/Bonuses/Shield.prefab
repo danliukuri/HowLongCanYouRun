@@ -14653,7 +14653,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  targetPositionOffset: {x: 0, y: 0, z: 0}
   activationThreshold: 0
 --- !u!1 &8128357362221281443
 GameObject:
@@ -14770,6 +14769,7 @@ MonoBehaviour:
   burstOnPlayer: {fileID: 8128357360573673169}
   player: {fileID: 0}
   obstacleBurst: {fileID: 7444361206289504, guid: 264525ae621790444b931e5fe7a0d0cb, type: 3}
+  foldIntoOneWhole: {fileID: 8128357362125709258}
 --- !u!54 &8128357362221281440
 Rigidbody:
   m_ObjectHideFlags: 0

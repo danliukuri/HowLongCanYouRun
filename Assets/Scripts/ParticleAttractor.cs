@@ -2,6 +2,10 @@
 
 public class ParticleAttractor : MonoBehaviour
 {
+    #region Properties
+    public Transform Target { get => target; set => target = value; }
+    #endregion
+
     #region Fields
     [Tooltip("The attractor target")]
     [SerializeField] Transform target;

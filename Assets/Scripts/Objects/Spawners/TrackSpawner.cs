@@ -5,16 +5,13 @@ public class TrackSpawner : MonoBehaviour
 {
     #region Fields
     [SerializeField] Transform player;
-    [Header("Inner spawners")]
-    [SerializeField] ObstacleSpawner obstacleSpawner;
-    [SerializeField] List<ShieldSpawner> bonusSpawners;
     [Header("Parts of the track")]
     [Tooltip("A transform that will be the parent of all spawned objects")]
     [SerializeField] Transform partsOfTheTrack;
     [SerializeField] GameObject startingTrackPart;
     [SerializeField] GameObject trackPart;
     [SerializeField] Transform startingObstacleTrack;
-
+    readonly List<Spawner> objectSpawners = new List<Spawner>();
     Quaternion trackPartRotation;
     Vector3 trackPartPosition;
     float trackPartLengthZ;
@@ -23,15 +20,17 @@ public class TrackSpawner : MonoBehaviour
     #endregion
 
     #region
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         trackPartRotation = Quaternion.identity;
         Transform previousTrackPart = startingTrackPart.transform;
         trackPartLengthZ = previousTrackPart.localScale.z;
         trackPartPosition = new Vector3(0f, 0f, previousTrackPart.position.z);
-        
-        obstacleSpawner.Spawn(startingObstacleTrack);
+
+        GetComponents(objectSpawners);
+
+        for (int i = 0; i < objectSpawners.Count; i++)
+            objectSpawners[i].Spawn(startingObstacleTrack);
         Spawn();
         Spawn();
     }
@@ -47,9 +46,8 @@ public class TrackSpawner : MonoBehaviour
         previousTrackPartPositionZ = trackPartPosition.z;
         trackPartPosition.z += trackPartLengthZ;
         Transform currentTrackPart = Instantiate(trackPart, trackPartPosition, trackPartRotation, partsOfTheTrack).transform;
-        obstacleSpawner.Spawn(currentTrackPart);
-        for (int i = 0; i < bonusSpawners.Count; i++)
-            bonusSpawners[i].Spawn(currentTrackPart);
+        for (int i = 0; i < objectSpawners.Count; i++)
+            objectSpawners[i].Spawn(currentTrackPart);
     }
     #endregion
 }

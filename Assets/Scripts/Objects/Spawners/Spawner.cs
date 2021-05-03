@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public abstract class Spawner : MonoBehaviour
+public class Spawner : MonoBehaviour
 {
     #region Fields
     [Tooltip("A transform that will be the parent of all spawned objects")]
@@ -13,7 +13,12 @@ public abstract class Spawner : MonoBehaviour
     #endregion
 
     #region Methods
-    public abstract void Spawn(Transform currentTrackPart);
+    public virtual void Spawn(Transform currentTrackPart)
+    {
+        spawnPosition = new Vector3(currentTrackPart.lossyScale.x - 1f, 1f, currentTrackPart.lossyScale.z - 1f); // Set spawn position
+        for (int i = 0; i < numberOfObjectsOnOneTrack; i++)
+            Instantiate(objectToSpawn, GetRandomPositionXZ() + currentTrackPart.position, GetRandomRotationY(), objectsParent);
+    }
     protected virtual Vector3 GetRandomPositionXZ() => new Vector3(spawnPosition.x * (Random.value - 0.5f),
         spawnPosition.y, spawnPosition.z * (Random.value - 0.5f));
     protected virtual Quaternion GetRandomRotationY() => Quaternion.Euler(0f, Random.Range(0f, 90f), 0f);

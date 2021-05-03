@@ -37,13 +37,18 @@ public class ShieldController : MonoBehaviour
     void OnCollisionEnter(Collision collision)
     {
         if (collision.collider.CompareTag("Obstacle"))
-            CauseBurstOnPlayer(collision.transform);
+        {
+            if (isShieldOnPlayer)
+                CauseBurstOnPlayer(collision.transform);
+            else
+                Destroy(gameObject);
+        }
         else if (collision.collider.CompareTag(player.tag))
         {
             if (playerBonuses.HasShield)
                 CauseBurst();
             else
-                PlaceShieldOnPlayer();
+                PlaceShieldOnPlayer(); 
         }
         else if (collision.collider.CompareTag("Shield") && !isShieldOnPlayer)
             CauseBurst();
@@ -59,11 +64,14 @@ public class ShieldController : MonoBehaviour
         transform.SetPositionAndRotation(playerTransform.position, playerTransform.rotation);
         burstOnPlayer.transform.SetParent(playerTransform);
 
-        meshRenderer.enabled = true;
-        Destroy(burst, 1f);
-        
         rgdbody.detectCollisions = true;
         rgdbody.isKinematic = false;
+
+        meshRenderer.enabled = playerBonuses.HasShield = true;
+        gameObject.tag = player.tag;
+        gameObject.layer = player.layer;
+
+        Destroy(burst, 1f);
     }
     void CauseBurst()
     {
@@ -82,7 +90,7 @@ public class ShieldController : MonoBehaviour
 
         burst.SetActive(true);
         meshRenderer.enabled = false;
-        isShieldOnPlayer = playerBonuses.HasShield = true;
+        isShieldOnPlayer = true;
     }
     void CauseBurstOnPlayer(Transform obstacle)
     {

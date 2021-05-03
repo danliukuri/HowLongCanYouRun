@@ -11,9 +11,6 @@ public class ShieldSpawner : Spawner
     {
         spawnPosition = new Vector3(currentTrackPart.lossyScale.x - 1f, 1f, currentTrackPart.lossyScale.z - 1f); // Set spawn position
         for (int i = 0; i < numberOfObjectsOnOneTrack; i++)
-        {
-            GameObject gameObject = Instantiate(objectToSpawn, GetRandomPositionXZ() + currentTrackPart.position,
-                GetRandomRotationY(), objectsParent);
-        }
+            Instantiate(objectToSpawn, GetRandomPositionXZ() + currentTrackPart.position,GetRandomRotationY(), objectsParent);
     }
 }

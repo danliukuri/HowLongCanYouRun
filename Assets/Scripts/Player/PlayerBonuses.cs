@@ -1,8 +1,5 @@
-﻿using UnityEngine;
-
-public class PlayerBonuses : MonoBehaviour
+﻿public static class PlayerBonuses
 {
-    #region Fields
-    public bool HasShield { get; set; }
-    #endregion
+    public static bool HasShield { get; set; }
+    public static ShieldController ShieldController { get; set; }
 }

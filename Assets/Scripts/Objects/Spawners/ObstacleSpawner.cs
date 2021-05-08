@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-class ObstacleSpawner : Spawner
+class ObstacleSpawner : ObjectSpawner
 {
     public override void Spawn(Transform currentTrackPart)
     {

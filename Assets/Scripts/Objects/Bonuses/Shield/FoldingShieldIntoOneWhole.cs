@@ -5,6 +5,9 @@ public class FoldingShieldIntoOneWhole : MonoBehaviour
     [SerializeField] ShieldController shieldController;
     private void OnParticleSystemStopped()
     {
-        shieldController.ActivateShield();
+        if (PlayerBonuses.HasShield)
+            Destroy(gameObject);
+        else
+            shieldController.ActivateShield();
     }
 }

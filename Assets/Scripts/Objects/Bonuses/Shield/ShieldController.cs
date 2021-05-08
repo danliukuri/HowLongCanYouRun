@@ -13,23 +13,18 @@ public class ShieldController : MonoBehaviour
     [SerializeField] GameObject obstacleBurst;
     [SerializeField] GameObject foldIntoOneWhole;
 
-    bool isShieldOnPlayer;
     MeshRenderer meshRenderer;
-    Rigidbody rgdbody;
-
-    Rigidbody playerRigidbody;
+    BoxCollider playerCollider;
     Transform playerTransform;
-    PlayerBonuses playerBonuses;
     #endregion
 
     #region Methods
     void Awake()
     {
         meshRenderer = GetComponent<MeshRenderer>();
-        rgdbody = GetComponent<Rigidbody>();
+
         playerTransform = player.transform;
-        playerRigidbody = player.GetComponent<Rigidbody>();
-        playerBonuses = player.GetComponent<PlayerBonuses>();
+        playerCollider = player.GetComponent<BoxCollider>();
 
         foldIntoOneWhole.GetComponent<ParticleAttractor>().Target = playerTransform;
         foldIntoOneWhole.GetComponent<ParticleSystem>().trigger.SetCollider(0, playerTransform);
@@ -37,41 +32,42 @@ public class ShieldController : MonoBehaviour
     void OnCollisionEnter(Collision collision)
     {
         if (collision.collider.CompareTag("Obstacle"))
-        {
-            if (isShieldOnPlayer)
-                CauseBurstOnPlayer(collision.transform);
-            else
-                Destroy(gameObject);
-        }
+            Destroy(gameObject);
         else if (collision.collider.CompareTag(player.tag))
         {
-            if (playerBonuses.HasShield)
+            if (PlayerBonuses.HasShield)
                 CauseBurst();
             else
-                PlaceShieldOnPlayer(); 
+                PlaceShieldOnPlayer();
         }
-        else if (collision.collider.CompareTag("Shield") && !isShieldOnPlayer)
+        else if (collision.collider.CompareTag("Shield"))
             CauseBurst();
+    }
+    public void OnCollisionEnterOnPlayer(Collision collision)
+    {
+        if (collision.collider.CompareTag("Obstacle"))
+            CauseBurstOnPlayer(collision.transform);
     }
 
     public void ActivateShield()
-    {
-        playerRigidbody.isKinematic = true;
-        playerRigidbody.detectCollisions = false;
+    {            
+        PlayerBonuses.ShieldController = this;
+        playerCollider.center = new Vector3(0f, 0.025f, 0f);
+        playerCollider.size = new Vector3(1.1f, 1.05f, 1.1f);
 
         transform.localScale = new Vector3(1.1f, 1.1f, 1.1f);
+        burstOnPlayer.transform.localScale = Vector3.one; 
         transform.localPosition = Vector3.zero;
         transform.SetPositionAndRotation(playerTransform.position, playerTransform.rotation);
-        burstOnPlayer.transform.SetParent(playerTransform);
 
-        rgdbody.detectCollisions = true;
-        rgdbody.isKinematic = false;
-
-        meshRenderer.enabled = playerBonuses.HasShield = true;
+        meshRenderer.enabled = PlayerBonuses.HasShield = true;
         gameObject.tag = player.tag;
         gameObject.layer = player.layer;
-
+        
         Destroy(burst, 1f);
+
+        if (!player.GetComponent<MeshRenderer>().enabled)
+            CauseBurst();
     }
     void CauseBurst()
     {
@@ -81,28 +77,26 @@ public class ShieldController : MonoBehaviour
     }
     void PlaceShieldOnPlayer()
     {
-        rgdbody.isKinematic = true;
-        rgdbody.detectCollisions = false;
-
+        GetComponent<Collider>().enabled = false;
         transform.SetParent(playerTransform);
+
         burst.transform.SetParent(playerTransform.parent);
         burst.transform.localScale = Vector3.one;
-
         burst.SetActive(true);
         meshRenderer.enabled = false;
-        isShieldOnPlayer = true;
     }
     void CauseBurstOnPlayer(Transform obstacle)
     {
+        burstOnPlayer.transform.SetParent(playerTransform);
         burstOnPlayer.SetActive(true);
-        playerBonuses.HasShield = false;
+        
+        PlayerBonuses.HasShield = false;
+        playerCollider.center = Vector3.zero;
+        playerCollider.size = Vector3.one;
 
         Instantiate(obstacleBurst, obstacle.position, obstacle.rotation);
         Destroy(obstacle.gameObject);
         Destroy(gameObject);
-
-        playerRigidbody.detectCollisions = true;
-        playerRigidbody.isKinematic = false;
     }
     #endregion
 }

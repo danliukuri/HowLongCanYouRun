@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class Spawner : MonoBehaviour
+public class ObjectSpawner : MonoBehaviour
 {
     #region Fields
     [Tooltip("A transform that will be the parent of all spawned objects")]

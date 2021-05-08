@@ -11,11 +11,11 @@ public class TrackSpawner : MonoBehaviour
     [SerializeField] GameObject startingTrackPart;
     [SerializeField] GameObject trackPart;
     [SerializeField] Transform startingObstacleTrack;
-    readonly List<Spawner> objectSpawners = new List<Spawner>();
+
+    readonly List<ObjectSpawner> objectSpawners = new List<ObjectSpawner>();
     Quaternion trackPartRotation;
     Vector3 trackPartPosition;
     float trackPartLengthZ;
-
     float previousTrackPartPositionZ;
     #endregion
 
@@ -28,7 +28,10 @@ public class TrackSpawner : MonoBehaviour
         trackPartPosition = new Vector3(0f, 0f, previousTrackPart.position.z);
 
         GetComponents(objectSpawners);
-
+    }
+    // Start is called before the first frame update
+    void Start()
+    {
         for (int i = 0; i < objectSpawners.Count; i++)
             objectSpawners[i].Spawn(startingObstacleTrack);
         Spawn();

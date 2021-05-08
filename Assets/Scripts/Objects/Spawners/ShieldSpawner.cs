@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class ShieldSpawner : Spawner
+public class ShieldSpawner : ObjectSpawner
 {
     [SerializeField] GameObject player;
     private void Awake()

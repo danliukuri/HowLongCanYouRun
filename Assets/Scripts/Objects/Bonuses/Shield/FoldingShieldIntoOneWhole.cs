@@ -6,7 +6,7 @@ public class FoldingShieldIntoOneWhole : MonoBehaviour
     private void OnParticleSystemStopped()
     {
         if (PlayerBonuses.HasShield)
-            Destroy(gameObject);
+            Destroy(shieldController.gameObject);
         else
             shieldController.ActivateShield();
     }

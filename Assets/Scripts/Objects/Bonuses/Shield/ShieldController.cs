@@ -26,7 +26,7 @@ public class ShieldController : MonoBehaviour
         playerTransform = player.transform;
         playerCollider = player.GetComponent<BoxCollider>();
 
-        foldIntoOneWhole.GetComponent<ParticleAttractor>().Target = playerTransform;
+        foldIntoOneWhole.GetComponent<Utilities.ParticleAttractor>().Target = playerTransform;
         foldIntoOneWhole.GetComponent<ParticleSystem>().trigger.SetCollider(0, playerTransform);
     }
     void OnCollisionEnter(Collision collision)
@@ -77,6 +77,7 @@ public class ShieldController : MonoBehaviour
     }
     void PlaceShieldOnPlayer()
     {
+        GetComponent<Rigidbody>().isKinematic = true;
         GetComponent<Collider>().enabled = false;
         transform.SetParent(playerTransform);
 

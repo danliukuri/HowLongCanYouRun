@@ -1,17 +1,17 @@
-﻿using UnityEngine;
-using System.Collections.Generic;
+﻿using System;
 
 namespace Utilities
 {
     public static class Extentions
     {
         /// <summary>
-        /// Changes property "enabled" for each list item
+        /// Calls action in a "for" loop for all elements
         /// </summary>
-        public static void Enabled(this List<Behaviour> behaviours, bool value)
+        /// <param name="action">сalled for array elements</param>
+        public static void ForAll<T>(this T[] array, Action<T> action)
         {
-            for (int i = 0; i < behaviours.Count; i++)
-                behaviours[i].enabled = value;
+            for (int i = 0; i < array.Length; i++)
+                action(array[i]);
         }
     }
 }

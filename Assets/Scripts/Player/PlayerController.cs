@@ -30,8 +30,8 @@ public class PlayerController : MonoBehaviour
         {
             GameObject gameObject = Instantiate(playerBurst, transform.position, transform.rotation, transform);
             gameObject.GetComponent<Renderer>().material = material;
-            meshRenderer.enabled = movementController.enabled = false;
-            //Game over
+            meshRenderer.enabled = false;
+            GameplayHandler.FinishGameplay();
         }
     }
 

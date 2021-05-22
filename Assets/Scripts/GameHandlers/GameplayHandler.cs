@@ -1,27 +1,41 @@
 ﻿using UnityEngine;
-using System.Collections.Generic;
 using Utilities;
 
-public class GameplayHandler : SingletonMonoBehaviour<GameplayHandler>
+public class GameplayHandler : MonoBehaviour
 {
     #region Fields
     [Tooltip("Components that need to be enabled when starting gameplay")]
-    [SerializeField] List<Behaviour> componentsToEnable;
+    [SerializeField] Behaviour[] componentsToEnableOnStart;
+    [Tooltip("Components that need to be enabled when finishing gameplay")]
+    [SerializeField] Behaviour[] componentsToEnableOnFinish;
+    [Tooltip("GameObjects that need to be enabled when finishing gameplay")]
+    [SerializeField] GameObject[] gameObjectsToSetActiveOnFinish;
+
+    static GameplayHandler instance;
     #endregion
 
     #region Methods
     void Awake()
     {
-        componentsToEnable.Enabled(false);
+        if (instance == null)
+            instance = this;
+        componentsToEnableOnStart.ForAll(e => e.enabled = false);
+        gameObjectsToSetActiveOnFinish.ForAll(e => e.SetActive(false));
+        componentsToEnableOnFinish.ForAll(e => e.enabled = false);
     }
 
     public static void StartGameplay()
     {
-       Instance.componentsToEnable.Enabled(true);
+        instance.componentsToEnableOnStart.ForAll(e => e.enabled = true);
     }
     public static void FinishGameplay()
     {
-       Instance.componentsToEnable.Enabled(false);
+        instance.componentsToEnableOnStart.ForAll(e => e.enabled = false);
+        instance.StartCoroutine(StaticFunctions.Invoke(() => 
+        {
+            instance.gameObjectsToSetActiveOnFinish.ForAll(e => e.SetActive(true));
+            instance.componentsToEnableOnFinish.ForAll(e => e.enabled = true);
+        }, 1f));
     }
     #endregion
 }

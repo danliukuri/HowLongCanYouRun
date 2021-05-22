@@ -1,27 +1,29 @@
 ﻿using UnityEngine;
-using Camera;
+using UnityEngine.SceneManagement;
+using Utilities;
 
 namespace UI
 {
-    public class CanvasButtons : Utilities.SingletonMonoBehaviour<CanvasButtons>
+    public class CanvasButtons : MonoBehaviour
     {
         #region Fields
-        [SerializeField] GameObject mainMenu;
+        [SerializeField] CanvasGroup mainMenuCanvas;
         [SerializeField] GateController gate;
 
-        CameraMovementToObject cameraMovementToObject;
+        [Header("Camera move and rotate to target behaviours")]
+        [SerializeField] MoveAndRotateToTargetBehaviour cameraMoveAndRotateToStartPositionBehaviour;
+        [SerializeField] MoveAndRotateToTargetBehaviour cameraMoveAndRotateToFloorBehaviour;
+
         const float gateOpenDelayTime = 0.4f;
         #endregion
 
         #region Methods
-        void Awake()
-        {
-            cameraMovementToObject = UnityEngine.Camera.main.GetComponent<CameraMovementToObject>();
-        }
         public void Play()
         {
-            cameraMovementToObject.enabled = true;
-            mainMenu.GetComponent<CanvasGroup>().blocksRaycasts = false;
+            Camera.main.GetComponents<MoveAndRotateToTargetBehaviour>().ForAll(e => e.enabled = false);
+            cameraMoveAndRotateToStartPositionBehaviour.enabled = true;
+
+            mainMenuCanvas.blocksRaycasts = false;
             gate.OpenTheGate(gateOpenDelayTime);
         }
         public void Quit()
@@ -34,6 +36,13 @@ namespace UI
             Application.Quit();
 #endif
         }
+
+        public void GoToMainMenu()
+        {
+            Camera.main.GetComponents<MoveAndRotateToTargetBehaviour>().ForAll(e => e.enabled = false);
+            cameraMoveAndRotateToFloorBehaviour.enabled = true;
+        }
+        public void LoadScene(int index) => SceneManager.LoadScene(index); 
         #endregion
     }
 }

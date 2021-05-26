@@ -2,6 +2,10 @@
 
 public class CoinController : MonoBehaviour
 {
+    #region Properties
+    public static int AwardCoinsCount { get; private set; }
+    #endregion
+
     #region Fields
     Animator animator;
     Collider coinCollider;
@@ -26,6 +30,9 @@ public class CoinController : MonoBehaviour
         coinCollider.enabled = false;
         animator.SetTrigger("CoinPick");
         Destroy(gameObject, 1f);
+        AwardCoinsCount++;
+        UIManager.CoinPick();
     }
+    public static void ResetAwardCoinsCount() => AwardCoinsCount = 0;
     #endregion
 }

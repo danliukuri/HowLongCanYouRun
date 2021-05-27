@@ -44,13 +44,13 @@ public class GameplayHandler : MonoBehaviour
     }
     public static void FinishGameplay()
     {
-        instance.componentsToEnableOnStart.ForAll(e => e.enabled = false);
         instance.StartCoroutine(StaticFunctions.Invoke(() => 
         {
             instance.gameObjectsToSetActiveOnFinish.ForAll(e => e.SetActive(true));
             instance.componentsToEnableOnFinish.ForAll(e => e.enabled = true);
             instance.eventsOnFinish.Invoke();
-        }, 1f));
+            SceneTransitionManager.LoadSceneWithDelay(1, 2f);
+        }, 0.5f));
     }
 
     void SaveAwardCoins()

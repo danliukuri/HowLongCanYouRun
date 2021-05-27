@@ -31,7 +31,12 @@ public class PlayerController : MonoBehaviour
             GameObject gameObject = Instantiate(playerBurst, transform.position, transform.rotation, transform);
             gameObject.GetComponent<Renderer>().material = material;
             meshRenderer.enabled = false;
+
             GameplayHandler.FinishGameplay();
+            StartCoroutine(Utilities.StaticFunctions.Invoke(() =>
+                Camera.main.GetComponent<CameraController>().MoveAndRotateToTheFloor(), 1f));
+            
+            movementController.enabled = this.enabled = false; 
         }
     }
 
@@ -39,7 +44,10 @@ public class PlayerController : MonoBehaviour
     {
         // Check if the player falls
         if (rgdbody.worldCenterOfMass.y < minCenterOfMassInYforBalance)
+        {
             movementController.enabled = false;
+            GameplayHandler.FinishGameplay();
+        }
     }
     #endregion
 }

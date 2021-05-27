@@ -30,7 +30,5 @@ public class SceneTransitionManager : MonoBehaviour
         instance.animator.SetTrigger("FadeOut");
         sceneIndex = index;
     }
-    public static void LoadSceneWithDelay(int index, float delayTime) => instance.StartCoroutine(
-        Utilities.StaticFunctions.Invoke(() => LoadScene(index), delayTime));
     #endregion
 }

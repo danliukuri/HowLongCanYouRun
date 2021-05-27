@@ -41,7 +41,7 @@ namespace UI
         {
             Camera.main.GetComponents<MoveAndRotateToTargetBehaviour>().ForAll(e => e.enabled = false);
             cameraMoveAndRotateToFloorBehaviour.enabled = true;
-            SceneTransitionManager.LoadSceneWithDelay(0, 0.4f);
+            StartCoroutine(StaticFunctions.Invoke(() => SceneTransitionManager.LoadScene(0), 0.4f));
         }
         public void LoadScene(int index) => SceneManager.LoadScene(index); 
         #endregion

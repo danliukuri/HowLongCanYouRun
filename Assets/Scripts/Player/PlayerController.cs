@@ -47,6 +47,8 @@ public class PlayerController : MonoBehaviour
         {
             movementController.enabled = false;
             GameplayHandler.FinishGameplay();
+            if (PlayerBonuses.HasShield)
+                PlayerBonuses.HasShield = false;
         }
     }
     #endregion

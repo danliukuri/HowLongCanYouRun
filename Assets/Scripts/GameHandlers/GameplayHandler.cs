@@ -49,7 +49,7 @@ public class GameplayHandler : MonoBehaviour
             instance.gameObjectsToSetActiveOnFinish.ForAll(e => e.SetActive(true));
             instance.componentsToEnableOnFinish.ForAll(e => e.enabled = true);
             instance.eventsOnFinish.Invoke();
-            SceneTransitionManager.LoadSceneWithDelay(1, 2f);
+            instance.StartCoroutine(StaticFunctions.Invoke(() => SceneTransitionManager.LoadScene(1), 2f));
         }, 0.5f));
     }
 

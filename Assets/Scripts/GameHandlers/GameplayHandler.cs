@@ -32,7 +32,6 @@ public class GameplayHandler : MonoBehaviour
         gameObjectsToSetActiveOnStart.ForAll(e => e.SetActive(false));
         componentsToEnableOnFinish.ForAll(e => e.enabled = false);
         gameObjectsToSetActiveOnFinish.ForAll(e => e.SetActive(false));
-        SaveAwardCoins();
         eventsOnAwake.Invoke();
     }
 
@@ -51,12 +50,6 @@ public class GameplayHandler : MonoBehaviour
             instance.eventsOnFinish.Invoke();
             instance.StartCoroutine(StaticFunctions.Invoke(() => SceneTransitionManager.LoadScene(1), 2f));
         }, 0.5f));
-    }
-
-    void SaveAwardCoins()
-    {
-        PlayerPrefs.SetInt("NumberOfCoins", PlayerPrefs.GetInt("NumberOfCoins") + CoinController.AwardCoinsCount);
-        CoinController.ResetAwardCoinsCount();
     }
     #endregion
 }

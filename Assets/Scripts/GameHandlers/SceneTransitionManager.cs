@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class SceneTransitionManager : MonoBehaviour
@@ -6,7 +7,7 @@ public class SceneTransitionManager : MonoBehaviour
     #region Fields
     Animator animator;
     static SceneTransitionManager instance;
-    static int sceneIndex;
+    static Action fadeOutCompletionAction;
     #endregion
 
     #region Methods
@@ -20,15 +21,13 @@ public class SceneTransitionManager : MonoBehaviour
     {
         gameObject.SetActive(false);
     }
-    void FadeOutFinished()
-    {
-        SceneManager.LoadScene(sceneIndex);
-    }
-    public static void LoadScene(int index)
+    void FadeOutFinished() => fadeOutCompletionAction?.Invoke();
+    public static void FadeOut(Action completionAction)
     {
         instance.gameObject.SetActive(true);
         instance.animator.SetTrigger("FadeOut");
-        sceneIndex = index;
+        fadeOutCompletionAction = completionAction;
     }
+    public static void LoadScene(int index) => FadeOut(() => SceneManager.LoadScene(index));
     #endregion
 }

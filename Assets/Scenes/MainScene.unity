@@ -968,6 +968,8 @@ GameObject:
   - component: {fileID: 353280137}
   - component: {fileID: 353280132}
   - component: {fileID: 353280136}
+  - component: {fileID: 353280138}
+  - component: {fileID: 353280139}
   - component: {fileID: 353280135}
   m_Layer: 0
   m_Name: Main Camera
@@ -1002,6 +1004,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5102ba125524714287c1191841e2a67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetName: GameplayStartPosition
   targetPosition: {x: 0, y: 4, z: -5}
   ignoreTargetPosition:
     x: 0
@@ -1009,7 +1012,7 @@ MonoBehaviour:
     z: 0
   movementSpeed: 2
   targetRotation: {x: 25, y: 0, z: 0}
-  rotationSpeed: 6
+  rotationSpeed: 20
   callbackFunction:
     m_PersistentCalls:
       m_Calls:
@@ -1102,6 +1105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5102ba125524714287c1191841e2a67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetName: Floor
   targetPosition: {x: 0, y: 1, z: 0}
   ignoreTargetPosition:
     x: 1
@@ -1109,7 +1113,7 @@ MonoBehaviour:
     z: 1
   movementSpeed: 1
   targetRotation: {x: 90, y: 0, z: 0}
-  rotationSpeed: 0.5
+  rotationSpeed: 15
   callbackFunction:
     m_PersistentCalls:
       m_Calls: []
@@ -1125,6 +1129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5102ba125524714287c1191841e2a67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetName: StartPosition
   targetPosition: {x: 0, y: 5, z: -1.5}
   ignoreTargetPosition:
     x: 0
@@ -1132,7 +1137,67 @@ MonoBehaviour:
     z: 0
   movementSpeed: 2
   targetRotation: {x: 60, y: 0, z: 0}
-  rotationSpeed: 2
+  rotationSpeed: 15
+  callbackFunction:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1866392371}
+        m_TargetAssemblyTypeName: UnityEngine.CanvasGroup, UnityEngine
+        m_MethodName: set_blocksRaycasts
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+--- !u!114 &353280138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 353280130}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5102ba125524714287c1191841e2a67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetName: QuitPosition
+  targetPosition: {x: -2.5, y: 2.36, z: -1.1}
+  ignoreTargetPosition:
+    x: 0
+    y: 0
+    z: 0
+  movementSpeed: 3
+  targetRotation: {x: 90, y: 0, z: 0}
+  rotationSpeed: 25
+  callbackFunction:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &353280139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 353280130}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5102ba125524714287c1191841e2a67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetName: ShopPosition
+  targetPosition: {x: 2.5, y: 2.36, z: -1.1}
+  ignoreTargetPosition:
+    x: 0
+    y: 0
+    z: 0
+  movementSpeed: 3
+  targetRotation: {x: 90, y: 0, z: 0}
+  rotationSpeed: 25
   callbackFunction:
     m_PersistentCalls:
       m_Calls: []
@@ -1150,7 +1215,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &365061775
 Transform:
@@ -1340,7 +1405,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!23 &483549376
 MeshRenderer:
@@ -1421,7 +1486,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &508866518
 Transform:
@@ -1502,7 +1567,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &514368165
 Transform:
@@ -1583,7 +1648,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &517992437
 Transform:
@@ -1681,11 +1746,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5102ba125524714287c1191841e2a67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetName: 
   targetPosition: {x: 0, y: 1, z: 0}
   ignoreTargetPosition:
-    x: 1
+    x: 0
     y: 0
-    z: 1
+    z: 0
   movementSpeed: 1
   targetRotation: {x: 90, y: 0, z: 0}
   rotationSpeed: 0.5
@@ -1716,6 +1782,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5102ba125524714287c1191841e2a67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetName: 
   targetPosition: {x: 0, y: 4, z: -5}
   ignoreTargetPosition:
     x: 0
@@ -1751,6 +1818,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5102ba125524714287c1191841e2a67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetName: 
   targetPosition: {x: 0, y: 5, z: -1.5}
   ignoreTargetPosition:
     x: 0
@@ -1826,12 +1894,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 528251451}
-  m_LocalRotation: {x: 0.5, y: 0, z: 0, w: 0.8660254}
+  m_LocalRotation: {x: 0.5, y: -0, z: -0, w: 0.8660254}
   m_LocalPosition: {x: 0, y: 5, z: -1.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_Father: {fileID: 2055020945}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1 &531839774
 GameObject:
@@ -2051,7 +2119,20 @@ MonoBehaviour:
       - m_Target: {fileID: 1866392370}
         m_TargetAssemblyTypeName: UI.CanvasButtons, Assembly-CSharp
         m_MethodName: Quit
-        m_Mode: 1
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 353280138}
+          m_ObjectArgumentAssemblyTypeName: Utilities.MoveAndRotateToTargetBehaviour,
+            Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1866392371}
+        m_TargetAssemblyTypeName: UnityEngine.CanvasGroup, UnityEngine
+        m_MethodName: set_blocksRaycasts
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2159,7 +2240,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &585409998
 Transform:
@@ -2268,7 +2349,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 596220935}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd4b8b81752a2fe4bbf2bca35f893d5d, type: 3}
+  m_Script: {fileID: 11500000, guid: 3222b313397bddc45bd04e592442440b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   awardTMP: {fileID: 0}
@@ -2289,7 +2370,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &653712192
 Transform:
@@ -2352,7 +2433,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &727231473
 Transform:
@@ -2791,7 +2872,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &941100594
 Transform:
@@ -3214,7 +3295,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1080809434
 Transform:
@@ -3359,7 +3440,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1152096378
 Transform:
@@ -3454,7 +3535,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!65 &1162273602
 BoxCollider:
@@ -3763,7 +3844,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!23 &1320862144
 MeshRenderer:
@@ -3844,7 +3925,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1323563672
 Transform:
@@ -4265,7 +4346,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!23 &1467533595
 MeshRenderer:
@@ -4766,7 +4847,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 0
 --- !u!4 &1670392328
 Transform:
@@ -4800,7 +4881,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1765486826
 Transform:
@@ -5082,7 +5163,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!23 &1833611538
 MeshRenderer:
@@ -5336,10 +5417,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eae4a0a6a326c7549a5862c9a1be9033, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainMenuCanvas: {fileID: 1866392371}
-  gate: {fileID: 2042645963}
   cameraMoveAndRotateToStartPositionBehaviour: {fileID: 353280132}
-  cameraMoveAndRotateToFloorBehaviour: {fileID: 0}
 --- !u!225 &1866392371
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -5350,7 +5428,7 @@ CanvasGroup:
   m_Enabled: 1
   m_Alpha: 1
   m_Interactable: 1
-  m_BlocksRaycasts: 1
+  m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
 --- !u!1001 &1883253366
 PrefabInstance:
@@ -5446,7 +5524,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1890607861
 Transform:
@@ -5649,7 +5727,20 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1530071028}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1866392370}
+        m_TargetAssemblyTypeName: UI.CanvasButtons, Assembly-CSharp
+        m_MethodName: GoShop
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 353280139}
+          m_ObjectArgumentAssemblyTypeName: Utilities.MoveAndRotateToTargetBehaviour,
+            Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!222 &1925174214
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5672,7 +5763,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1925179737
 Transform:
@@ -5737,7 +5828,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1949609919
 Transform:
@@ -5864,19 +5955,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   eventsOnAwake:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 596220937}
-        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: TryToOutputTheNumberOfCoins
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   componentsToEnableOnStart:
   - {fileID: 10283002}
   - {fileID: 10283001}
@@ -6229,6 +6308,7 @@ Transform:
   - {fileID: 1939611480}
   - {fileID: 1050301365}
   - {fileID: 1845596490}
+  - {fileID: 528251458}
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6316,7 +6396,19 @@ MonoBehaviour:
       - m_Target: {fileID: 1866392370}
         m_TargetAssemblyTypeName: UI.CanvasButtons, Assembly-CSharp
         m_MethodName: Play
-        m_Mode: 1
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 2042645963}
+          m_ObjectArgumentAssemblyTypeName: GateController, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1866392371}
+        m_TargetAssemblyTypeName: UnityEngine.CanvasGroup, UnityEngine
+        m_MethodName: set_blocksRaycasts
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

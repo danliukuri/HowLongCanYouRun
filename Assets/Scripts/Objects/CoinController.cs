@@ -31,7 +31,7 @@ public class CoinController : MonoBehaviour
         animator.SetTrigger("CoinPick");
         Destroy(gameObject, 1f);
         AwardCoinsCount++;
-        UIManager.CoinPick();
+        UI.CoinsUIManager.CoinPick();
     }
     public static void ResetAwardCoinsCount() => AwardCoinsCount = 0;
     #endregion

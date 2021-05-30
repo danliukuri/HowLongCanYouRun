@@ -222,6 +222,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 386470919}
     m_Modifications:
+    - target: {fileID: 1221732958638260805, guid: 349fafd7ea6383c4badca7ed1c5dccbb, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7877295724530490368, guid: 349fafd7ea6383c4badca7ed1c5dccbb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -314,7 +318,7 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: 349fafd7ea6383c4badca7ed1c5dccbb, type: 3}
 --- !u!224 &60825060 stripped
 RectTransform:
-  m_CorrespondingSourceObject: {fileID: 7877295724530490368, guid: 349fafd7ea6383c4badca7ed1c5dccbb, type: 3}
+  m_CorrespondingSourceObject: {fileID: 1221732958638260805, guid: 349fafd7ea6383c4badca7ed1c5dccbb, type: 3}
   m_PrefabInstance: {fileID: 60825059}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &73418281
@@ -489,6 +493,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5102ba125524714287c1191841e2a67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetName: StartReceivingAwardsPosition
   targetPosition: {x: 3, y: 1.2, z: -4.5}
   ignoreTargetPosition:
     x: 0
@@ -496,7 +501,7 @@ MonoBehaviour:
     z: 0
   movementSpeed: 2
   targetRotation: {x: 0, y: -45, z: 0}
-  rotationSpeed: 6
+  rotationSpeed: 50
   callbackFunction:
     m_PersistentCalls:
       m_Calls:
@@ -548,6 +553,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5102ba125524714287c1191841e2a67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetName: Floor
   targetPosition: {x: 6, y: 1, z: -7.5}
   ignoreTargetPosition:
     x: 0
@@ -555,7 +561,7 @@ MonoBehaviour:
     z: 0
   movementSpeed: 3
   targetRotation: {x: 90, y: 0, z: 0}
-  rotationSpeed: 3
+  rotationSpeed: 50
   callbackFunction:
     m_PersistentCalls:
       m_Calls: []
@@ -611,10 +617,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eae4a0a6a326c7549a5862c9a1be9033, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainMenuCanvas: {fileID: 0}
-  gate: {fileID: 0}
   cameraMoveAndRotateToStartPositionBehaviour: {fileID: 0}
-  cameraMoveAndRotateToFloorBehaviour: {fileID: 82301966}
+  cameraMoveAndRotateToQuitBehaviour: {fileID: 0}
 --- !u!114 &325990387
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -718,7 +722,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 386470918}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd4b8b81752a2fe4bbf2bca35f893d5d, type: 3}
+  m_Script: {fileID: 11500000, guid: 3222b313397bddc45bd04e592442440b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   awardTMP: {fileID: 2088214977}
@@ -742,7 +746,7 @@ GameObject:
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!65 &635402214
 BoxCollider:
@@ -1217,10 +1221,11 @@ MonoBehaviour:
       - m_Target: {fileID: 325990386}
         m_TargetAssemblyTypeName: UI.CanvasButtons, Assembly-CSharp
         m_MethodName: GoToMainMenu
-        m_Mode: 1
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 82301966}
+          m_ObjectArgumentAssemblyTypeName: Utilities.MoveAndRotateToTargetBehaviour,
+            Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1329,7 +1334,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1698806744
 Transform:

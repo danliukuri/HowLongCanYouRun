@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.SceneManagement;
 using Utilities;
 
 namespace UI
@@ -7,26 +6,22 @@ namespace UI
     public class CanvasButtons : MonoBehaviour
     {
         #region Fields
-        [SerializeField] CanvasGroup mainMenuCanvas;
-        [SerializeField] GateController gate;
-
         [Header("Camera move and rotate to target behaviours")]
         [SerializeField] MoveAndRotateToTargetBehaviour cameraMoveAndRotateToStartPositionBehaviour;
-        [SerializeField] MoveAndRotateToTargetBehaviour cameraMoveAndRotateToFloorBehaviour;
-
-        const float gateOpenDelayTime = 0.4f;
         #endregion
 
         #region Methods
-        public void Play()
+        public void Play(GateController gateToOpen)
         {
-            Camera.main.GetComponents<MoveAndRotateToTargetBehaviour>().ForAll(e => e.enabled = false);
             cameraMoveAndRotateToStartPositionBehaviour.enabled = true;
-
-            mainMenuCanvas.blocksRaycasts = false;
-            gate.OpenTheGate(gateOpenDelayTime);
+            gateToOpen.OpenTheGate(0.4f);
         }
-        public void Quit()
+        public void Quit(MoveAndRotateToTargetBehaviour behaviourToEnable)
+        {
+            behaviourToEnable.enabled = true;
+            StartCoroutine(StaticFunctions.Invoke(() => SceneTransitionManager.FadeOut(() => ApplicationQuit()), 0.2f));
+        }
+        void ApplicationQuit()
         {
 #if UNITY_EDITOR
             UnityEditor.EditorApplication.isPlaying = false;
@@ -37,13 +32,13 @@ namespace UI
 #endif
         }
 
-        public void GoToMainMenu()
+        public void GoToMainMenu(MoveAndRotateToTargetBehaviour behaviourToEnable) => GoToScene(0, 0.4f, behaviourToEnable);
+        public void GoShop(MoveAndRotateToTargetBehaviour behaviourToEnable) => GoToScene(2, 0.2f, behaviourToEnable);
+        void GoToScene(int index, float delayTime, MoveAndRotateToTargetBehaviour behaviourToEnable)
         {
-            Camera.main.GetComponents<MoveAndRotateToTargetBehaviour>().ForAll(e => e.enabled = false);
-            cameraMoveAndRotateToFloorBehaviour.enabled = true;
-            StartCoroutine(StaticFunctions.Invoke(() => SceneTransitionManager.LoadScene(0), 0.4f));
+            behaviourToEnable.enabled = true;
+            StartCoroutine(StaticFunctions.Invoke(() => SceneTransitionManager.LoadScene(index), delayTime));
         }
-        public void LoadScene(int index) => SceneManager.LoadScene(index); 
         #endregion
     }
 }

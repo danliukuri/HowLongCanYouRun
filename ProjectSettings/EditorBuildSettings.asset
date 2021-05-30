@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/AwardScene.unity
     guid: 1ea523f26a914474083a71d464b32d90
+  - enabled: 1
+    path: Assets/Scenes/ShopScene.unity
+    guid: 07aa0949c32796445afab5dd9ac9516b
   m_configObjects: {}

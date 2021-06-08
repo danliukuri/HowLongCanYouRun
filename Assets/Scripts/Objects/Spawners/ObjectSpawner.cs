@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using Utilities;
 
 public class ObjectSpawner : MonoBehaviour
 {
@@ -19,6 +20,8 @@ public class ObjectSpawner : MonoBehaviour
         for (int i = 0; i < numberOfObjectsOnOneTrack; i++)
             Instantiate(objectToSpawn, GetRandomPositionXZ() + currentTrackPart.position, GetRandomRotationY(), objectsParent);
     }
+    public void DestroySpawnedObjects() => objectsParent.DestroyChilds();
+
     protected virtual Vector3 GetRandomPositionXZ() => new Vector3(spawnPosition.x * (Random.value - 0.5f),
         spawnPosition.y, spawnPosition.z * (Random.value - 0.5f));
     protected virtual Quaternion GetRandomRotationY() => Quaternion.Euler(0f, Random.Range(0f, 90f), 0f);

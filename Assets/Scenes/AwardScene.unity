@@ -618,7 +618,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraMoveAndRotateToStartPositionBehaviour: {fileID: 0}
-  cameraMoveAndRotateToQuitBehaviour: {fileID: 0}
 --- !u!114 &325990387
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -741,6 +740,7 @@ GameObject:
   - component: {fileID: 635402216}
   - component: {fileID: 635402215}
   - component: {fileID: 635402214}
+  - component: {fileID: 635402218}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -824,6 +824,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &635402218
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 635402213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3c9ac7001a5f9142851d19f6bc86f5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &647466399
 GameObject:
   m_ObjectHideFlags: 0

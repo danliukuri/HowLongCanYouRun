@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class CoinSpawnController : MonoBehaviour
+public class AwardCoinsSpawner : MonoBehaviour
 {
     CoinSpawner coinSpawner;
     void Awake()

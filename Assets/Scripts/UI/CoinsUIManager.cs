@@ -21,12 +21,13 @@ namespace UI
         {
             if (instance == null)
                 instance = this;
-            TryToOutputTheNumberOfCoins();
+            if (numberOfCoinsTMP && coinsDecoration)
+                TryToOutputTheNumberOfCoins();
         }
 
         public void OutputAward()
         {
-            // ran 5000 cubes and
+            // Ran 5000 cubes and...
             awardTMP.text = "You earned " + (CoinController.AwardCoinsCount).ToString() + " coins, keep it up!!!";
             SaveAwardCoins();
         }
@@ -38,14 +39,21 @@ namespace UI
 
         public void TryToOutputTheNumberOfCoins()
         {
-            if (PlayerPrefs.GetInt("NumberOfCoins") > 0 && numberOfCoinsTMP && coinsDecoration)
+            if (PlayerPrefs.GetInt("NumberOfCoins") > 0)
             {
                 numberOfCoinsTMP.text = PlayerPrefs.GetInt("NumberOfCoins").ToString();
                 numberOfCoinsTMP.gameObject.SetActive(true);
                 coinsDecoration.SetActive(true);
             }
+            else
+            {
+                numberOfCoinsTMP.text = (0).ToString();
+                numberOfCoinsTMP.gameObject.SetActive(false);
+                coinsDecoration.SetActive(false);
+            }
         }
 
+        public static void UpdateOutputTheNumberOfCoins() => instance.TryToOutputTheNumberOfCoins();
         public static void CoinPick()
         {
             instance.coinCount.text = (CoinController.AwardCoinsCount).ToString("000");

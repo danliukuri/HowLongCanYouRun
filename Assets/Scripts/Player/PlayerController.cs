@@ -7,7 +7,6 @@ public class PlayerController : MonoBehaviour
 
     PlayerMovementController movementController;
     MeshRenderer meshRenderer;
-    Material material;
     Rigidbody rgdbody;
     float minCenterOfMassInYforBalance;
     #endregion
@@ -17,7 +16,6 @@ public class PlayerController : MonoBehaviour
     {
         movementController = GetComponent<PlayerMovementController>();
         meshRenderer = GetComponent<MeshRenderer>();
-        material = GetComponent<Renderer>().material;
         rgdbody = GetComponent<Rigidbody>();
         minCenterOfMassInYforBalance = rgdbody.worldCenterOfMass.y - 0.05f;
     }
@@ -29,7 +27,7 @@ public class PlayerController : MonoBehaviour
         else if (collision.collider.CompareTag("Obstacle"))
         {
             GameObject gameObject = Instantiate(playerBurst, transform.position, transform.rotation, transform);
-            gameObject.GetComponent<Renderer>().material = material;
+            gameObject.GetComponent<Renderer>().material = GetComponent<Renderer>().material;
             meshRenderer.enabled = false;
 
             GameplayHandler.FinishGameplay();

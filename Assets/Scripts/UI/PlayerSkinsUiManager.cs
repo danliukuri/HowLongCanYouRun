@@ -84,6 +84,7 @@ public class PlayerSkinsUiManager : MonoBehaviour
         coinSpawner.StartCoroutineSpawn(40);
         cameraToViewThePurchase.enabled = true;
 
+        AudioManager.Invoke(() => AudioManager.Play("PlayerParticleTornado"), 0.6f);
         PlayerSkinsController.BuySkin();
         PlayerPrefs.SetInt("NumberOfCoins", numberOfCoinsAfterPurchase);
         StartCoroutine(StaticFunctions.Invoke(() =>

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using Utilities;
 
 public class PlayerController : MonoBehaviour
 {   
@@ -25,29 +26,39 @@ public class PlayerController : MonoBehaviour
         if (PlayerBonuses.HasShield)
             PlayerBonuses.ShieldController.OnCollisionEnterOnPlayer(collision);
         else if (collision.collider.CompareTag("Obstacle"))
-        {
-            GameObject gameObject = Instantiate(playerBurst, transform.position, transform.rotation, transform);
-            gameObject.GetComponent<Renderer>().material = GetComponent<Renderer>().material;
-            meshRenderer.enabled = false;
-
-            GameplayHandler.FinishGameplay();
-            StartCoroutine(Utilities.StaticFunctions.Invoke(() =>
-                Camera.main.GetComponent<CameraController>().MoveAndRotateToTheFloor(), 1f));
-            
-            movementController.enabled = this.enabled = false; 
-        }
+            PlayerCrashDeath();
     }
 
     void Update()
     {
         // Check if the player falls
         if (rgdbody.worldCenterOfMass.y < minCenterOfMassInYforBalance)
-        {
-            movementController.enabled = false;
-            GameplayHandler.FinishGameplay();
-            if (PlayerBonuses.HasShield)
-                PlayerBonuses.HasShield = false;
-        }
+            PlayerFallsDeath();
+    }
+
+    void PlayerCrashDeath()
+    {
+        GameObject gameObject = Instantiate(playerBurst, transform.position, transform.rotation, transform);
+        gameObject.GetComponent<Renderer>().material = GetComponent<Renderer>().material;
+        meshRenderer.enabled = false;
+
+        StartCoroutine(StaticFunctions.Invoke(() =>
+            Camera.main.GetComponent<CameraController>().MoveAndRotateToTheFloor(), 1f));
+
+        AudioManager.PlayInPosition("ObstacleCrash", transform.position);
+        PlayerDeath();
+    }
+    void PlayerFallsDeath()
+    {
+        if (PlayerBonuses.HasShield)
+            PlayerBonuses.HasShield = false;
+        PlayerDeath();
+    }
+    void PlayerDeath()
+    {
+        movementController.enabled = this.enabled = false;
+        AudioManager.PlayInPosition("PlayerDeath", transform.position);
+        GameplayHandler.FinishGameplay();
     }
     #endregion
 }

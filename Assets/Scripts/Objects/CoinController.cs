@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using Utilities;
 
 public class CoinController : MonoBehaviour
 {
@@ -22,16 +23,17 @@ public class CoinController : MonoBehaviour
         if (collision.collider.CompareTag("Obstacle") || collision.collider.CompareTag("Shield"))
             Destroy(gameObject);
         else if (collision.collider.CompareTag("Player"))
-            CoinPick();
+            CoinPickUp();
     }
 
-    void CoinPick()
+    void CoinPickUp()
     {
         coinCollider.enabled = false;
         animator.SetTrigger("CoinPick");
         Destroy(gameObject, 1f);
         AwardCoinsCount++;
         UI.CoinsUIManager.CoinPick();
+        AudioManager.PlayInPosition("CoinPickUp", transform.position);
     }
     public static void ResetAwardCoinsCount() => AwardCoinsCount = 0;
     #endregion

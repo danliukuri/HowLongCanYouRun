@@ -37,12 +37,14 @@ public class GameplayHandler : MonoBehaviour
 
     public static void StartGameplay()
     {
+        AudioController.StartGameplay();
         instance.componentsToEnableOnStart.ForAll(e => e.enabled = true);
         instance.gameObjectsToSetActiveOnStart.ForAll(e => e.SetActive(true));
         instance.eventsOnStart.Invoke();
     }
     public static void FinishGameplay()
     {
+        AudioController.FinishGameplay();
         instance.StartCoroutine(StaticFunctions.Invoke(() => 
         {
             instance.gameObjectsToSetActiveOnFinish.ForAll(e => e.SetActive(true));

@@ -23,5 +23,14 @@ namespace Utilities
             for (int i = transform.childCount - 1; i >= 0; i--)
                 GameObject.Destroy(transform.GetChild(i).gameObject);
         }
+
+        /// <summary>
+        /// Is the audio source paused right now? 
+        /// </summary>
+        /// <returns>
+        /// <see langword="True"/> if the sound source is not playing(<seealso cref="AudioSource.isPlaying"/>)
+        /// and the playback position(<seealso cref="AudioSource.time"/>) is nonzero, otherwise <see langword="false"/>
+        /// </returns>
+        public static bool IsPaused(this AudioSource audioSource) => (!audioSource.isPlaying) && (audioSource.time != 0);
     }
 }

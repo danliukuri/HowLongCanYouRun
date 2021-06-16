@@ -15,6 +15,7 @@ namespace UI
         {
             cameraMoveAndRotateToStartPositionBehaviour.enabled = true;
             gateToOpen.OpenTheGate(0.4f);
+            AudioManager.FadeOutAndStop("MenuTheme", 0.5f);
         }
         public void Quit(MoveAndRotateToTargetBehaviour behaviourToEnable)
         {
@@ -39,6 +40,8 @@ namespace UI
             behaviourToEnable.enabled = true;
             StartCoroutine(StaticFunctions.Invoke(() => SceneTransitionManager.LoadScene(index), delayTime));
         }
+
+        public void PlayButtonClickSound() => AudioManager.Play("UIButtonClick");
         #endregion
     }
 }

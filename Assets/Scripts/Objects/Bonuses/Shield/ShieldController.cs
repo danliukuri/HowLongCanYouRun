@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using Utilities;
 
 public class ShieldController : MonoBehaviour
 {
@@ -74,6 +75,7 @@ public class ShieldController : MonoBehaviour
         burstOnPlayer.transform.SetParent(transform.parent);
         burstOnPlayer.SetActive(true);
         Destroy(gameObject);
+        AudioManager.PlayInPosition("ShieldDestruction", transform.position);
     }
     void PlaceShieldOnPlayer()
     {
@@ -85,6 +87,8 @@ public class ShieldController : MonoBehaviour
         burst.transform.localScale = Vector3.one;
         burst.SetActive(true);
         meshRenderer.enabled = false;
+        AudioManager.PlayInPosition("ShieldDestruction", transform.position);
+        AudioManager.PlayFollowingTheTarget("ShieldSetToThePlayer", playerTransform);
     }
     void CauseBurstOnPlayer(Transform obstacle)
     {
@@ -98,6 +102,8 @@ public class ShieldController : MonoBehaviour
         Instantiate(obstacleBurst, obstacle.position, obstacle.rotation);
         Destroy(obstacle.gameObject);
         Destroy(gameObject);
+        AudioManager.PlayInPosition("ObstacleCrash", obstacle.transform.position);
+        AudioManager.PlayInPosition("ShieldDestruction", transform.position);
     }
     #endregion
 }

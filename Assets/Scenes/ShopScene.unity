@@ -1730,7 +1730,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &115981624
 Transform:
   m_ObjectHideFlags: 0
@@ -2449,15 +2449,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 200335980}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -2.6, y: 0, z: -0.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 213650696}
   - {fileID: 5566019}
   - {fileID: 1376751380}
-  m_Father: {fileID: 1442711089}
-  m_RootOrder: 1
+  m_Father: {fileID: 483858828}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &200482881
 GameObject:
@@ -3708,6 +3708,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 51021680}
+        m_TargetAssemblyTypeName: UI.CanvasButtons, Assembly-CSharp
+        m_MethodName: PlayButtonClickSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!222 &289221669
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4822,15 +4834,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 360149604}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 2.6, y: 0, z: -0.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1421333004}
   - {fileID: 1251005600}
   - {fileID: 372681658}
-  m_Father: {fileID: 1442711089}
-  m_RootOrder: 2
+  m_Father: {fileID: 483858828}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &361425052
 PrefabInstance:
@@ -10961,6 +10973,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 51021680}
+        m_TargetAssemblyTypeName: UI.CanvasButtons, Assembly-CSharp
+        m_MethodName: PlayButtonClickSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!222 &463074746
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -11216,6 +11240,40 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 478389627}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &483858827
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 483858828}
+  m_Layer: 0
+  m_Name: Decorations
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &483858828
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 483858827}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 200335981}
+  - {fileID: 360149605}
+  - {fileID: 1339179240}
+  - {fileID: 1882218091}
+  m_Father: {fileID: 1442711089}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &486492318
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16042,6 +16100,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 51021680}
+        m_TargetAssemblyTypeName: UI.CanvasButtons, Assembly-CSharp
+        m_MethodName: PlayButtonClickSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!222 &886483877
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -18140,7 +18210,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1143941216
 GameObject:
@@ -19544,7 +19614,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectsParent: {fileID: 1890879554}
-  objectToSpawn: {fileID: 3937890398772768059, guid: d0f26bfb2c412f349bd1a015d73ac5d4, type: 3}
+  objectToSpawn: {fileID: 8683748489668880446, guid: 38fa8b6e9812d06498cfa1a7e1fb490a, type: 3}
   numberOfObjectsOnOneTrack: 5
 --- !u!4 &1234337061
 Transform:
@@ -19553,12 +19623,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1234337057}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 4, z: 10}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 3, z: 10}
   m_LocalScale: {x: 14, y: 1, z: 10}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_Father: {fileID: 1442711089}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1235325317
 PrefabInstance:
@@ -20481,16 +20551,16 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1339179239}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.93, y: 0.7, z: -0.51}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 2.93, y: 0.70000005, z: -0.51}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 329102458}
   - {fileID: 1706891923}
   - {fileID: 451163925}
   - {fileID: 592276625}
-  m_Father: {fileID: 1442711089}
-  m_RootOrder: 3
+  m_Father: {fileID: 483858828}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1341850229
 PrefabInstance:
@@ -21518,11 +21588,10 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1874671481}
-  - {fileID: 200335981}
-  - {fileID: 360149605}
-  - {fileID: 1339179240}
-  - {fileID: 1882218091}
+  - {fileID: 483858828}
   - {fileID: 1618563658}
+  - {fileID: 1890879554}
+  - {fileID: 1234337061}
   m_Father: {fileID: 1700227031}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -22996,7 +23065,7 @@ Transform:
   - {fileID: 294323298}
   - {fileID: 382328448}
   m_Father: {fileID: 1442711089}
-  m_RootOrder: 5
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1631958942
 GameObject:
@@ -24075,7 +24144,7 @@ Transform:
   - {fileID: 1442711089}
   - {fileID: 1682372338}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1701547687
 GameObject:
@@ -26359,8 +26428,8 @@ Transform:
   m_Children:
   - {fileID: 110367006}
   - {fileID: 1925420156}
-  m_Father: {fileID: 1442711089}
-  m_RootOrder: 4
+  m_Father: {fileID: 483858828}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1890879553
 GameObject:
@@ -26386,11 +26455,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1890879553}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 2, z: 5}
+  m_LocalPosition: {x: 0, y: 1, z: 5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_Father: {fileID: 1442711089}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1892089866
 GameObject:
@@ -26887,6 +26956,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 51021680}
+        m_TargetAssemblyTypeName: UI.CanvasButtons, Assembly-CSharp
+        m_MethodName: PlayButtonClickSound
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -28268,6 +28349,18 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 429312524}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Renderer, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 51021680}
+        m_TargetAssemblyTypeName: UI.CanvasButtons, Assembly-CSharp
+        m_MethodName: PlayButtonClickSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -34437,7 +34530,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   material: {fileID: 2100000, guid: ab3f957a1c044d2449b65ab058befb85, type: 2}
-  price: 50
+  price: 0
   isItPurchased: 0
 --- !u!114 &2083339622
 MonoBehaviour:

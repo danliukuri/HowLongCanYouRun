@@ -7,7 +7,8 @@ namespace Utilities
     public class MoveAndRotateToTargetBehaviour : MonoBehaviour
     {
         #region Properties
-        public string TargetName { get; private set; }
+        public string TargetName => targetName;
+        public UnityEvent OnAchieveTargetPosition { get => onAchieveTargetPosition; }
         #endregion
 
         #region Fields
@@ -22,14 +23,10 @@ namespace Utilities
             "Measured in degrees per second")]
         [SerializeField] float rotationSpeed = 10f;
 
-        [SerializeField] UnityEvent callbackFunction;
+        [SerializeField] UnityEvent onAchieveTargetPosition;
         #endregion
 
         #region Methods
-        void Awake()
-        {
-            TargetName = targetName;
-        }
         void Update()
         {
             if (ignoreTargetPosition.X) targetPosition.x = transform.position.x;
@@ -47,7 +44,7 @@ namespace Utilities
 
             if (distanceToObject == 0f && angleToObject == 0f)
             {
-                callbackFunction.Invoke();
+                onAchieveTargetPosition.Invoke();
                 enabled = false;
             }
         }

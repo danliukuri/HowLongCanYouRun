@@ -61,11 +61,9 @@ namespace Utilities
 			AudioSource audioSource = FindPlayingAudioSource(audioName);
 			instance.StartCoroutine(FadeOut(audioSource, () => audioSource.Pause(), speed));
 		}
-		public static void FadeOutAndStop(string audioName, float speed)
-		{
-			AudioSource audioSource = FindPlayingAudioSource(audioName);
+		public static void FadeOutAndStop(AudioSource audioSource, float speed) => 
 			instance.StartCoroutine(FadeOut(audioSource, () => audioSource.Stop(), speed));
-		}
+		public static void FadeOutAndStop(string audioName, float speed) => FadeOutAndStop(FindPlayingAudioSource(audioName), speed);
 		public static void FadeInAndUnPause(string audioName, float speed)
 		{
 			AudioSource audioSource = FindPausedAudioSource(audioName);
@@ -120,14 +118,21 @@ namespace Utilities
 				throw new ArgumentException("The value must be less than or equal to one!", nameof(speed));
 		}
 
-		static AudioSource FindAudioSourceOrCloneWhen(string audioName, Predicate<AudioSource> cloneWhen)
+		public static AudioSource FindAudioSource(string audioName, Predicate<AudioSource> condition)
 		{
 			if (audioName is null)
 				throw new ArgumentNullException(nameof(audioName));
+			if (condition is null)
+				throw new ArgumentNullException(nameof(condition));
+			return audioSources.Find(audio => condition.Invoke(audio));
+		}
+		public static AudioSource FindAudioSource(string audioName) => FindAudioSource(audioName, (audio) => audio.name == audioName);
+		static AudioSource FindAudioSourceOrCloneWhen(string audioName, Predicate<AudioSource> cloneWhen)
+		{
 			if (cloneWhen is null)
 				throw new ArgumentNullException(nameof(cloneWhen));
 
-			AudioSource audioSource = audioSources.Find(audio => audio.name == audioName);
+			AudioSource audioSource = FindAudioSource(audioName, (audio) => audio.name == audioName);
 			if (audioSource is null)
 				throw new ArgumentException("Audio source \"" + audioName + "\" not found!", nameof(audioSource));
 
@@ -140,18 +145,14 @@ namespace Utilities
 		}
 		static AudioSource FindPlayingAudioSource(string audioName)
 		{
-			if (audioName is null)
-				throw new ArgumentNullException(nameof(audioName));
-			AudioSource audioSource = audioSources.Find(audio => audio.name == audioName && audio.isPlaying);
+			AudioSource audioSource = FindAudioSource(audioName,(audio) => audio.name == audioName && audio.isPlaying);
 			if (audioSource is null)
 				throw new ArgumentException("Playing audio source \"" + audioName + "\" not found!", nameof(audioSource));
 			return audioSource;
 		}
 		static AudioSource FindPausedAudioSource(string audioName)
 		{
-			if (audioName is null)
-				throw new ArgumentNullException(nameof(audioName));
-			AudioSource audioSource = audioSources.Find(audio => audio.name == audioName && audio.IsPaused());
+			AudioSource audioSource = FindAudioSource(audioName, (audio) => audio.name == audioName && audio.IsPaused());
 			if (audioSource is null)
 				throw new ArgumentException("Paused audio source \"" + audioName + "\" not found!", nameof(audioSource));
 			return audioSource;

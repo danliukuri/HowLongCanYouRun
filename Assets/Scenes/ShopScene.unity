@@ -15802,7 +15802,7 @@ MonoBehaviour:
   movementSpeed: 1
   targetRotation: {x: -6, y: 0, z: 0}
   rotationSpeed: 25
-  callbackFunction:
+  onAchieveTargetPosition:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 429312522}
@@ -15838,7 +15838,7 @@ MonoBehaviour:
   movementSpeed: 2
   targetRotation: {x: 90, y: 0, z: 0}
   rotationSpeed: 40
-  callbackFunction:
+  onAchieveTargetPosition:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &882603241
@@ -15862,7 +15862,7 @@ MonoBehaviour:
   movementSpeed: 1
   targetRotation: {x: 23, y: 0, z: 0}
   rotationSpeed: 25
-  callbackFunction:
+  onAchieveTargetPosition:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 51021679}
@@ -15922,7 +15922,7 @@ MonoBehaviour:
   movementSpeed: 4
   targetRotation: {x: 23, y: 0, z: 0}
   rotationSpeed: 16
-  callbackFunction:
+  onAchieveTargetPosition:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 51021679}
@@ -17484,7 +17484,7 @@ MonoBehaviour:
   movementSpeed: 3
   targetRotation: {x: 90, y: 0, z: 0}
   rotationSpeed: 3
-  callbackFunction:
+  onAchieveTargetPosition:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &1060882267
@@ -17508,7 +17508,7 @@ MonoBehaviour:
   movementSpeed: 1
   targetRotation: {x: 90, y: 0, z: 0}
   rotationSpeed: 0.5
-  callbackFunction:
+  onAchieveTargetPosition:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &1060882269
@@ -17589,21 +17589,9 @@ MonoBehaviour:
   movementSpeed: 1
   targetRotation: {x: -6, y: 0, z: 0}
   rotationSpeed: 25
-  callbackFunction:
+  onAchieveTargetPosition:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 51021679}
-        m_TargetAssemblyTypeName: UnityEngine.CanvasGroup, UnityEngine
-        m_MethodName: set_blocksRaycasts
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
+      m_Calls: []
 --- !u!4 &1060882272
 Transform:
   m_ObjectHideFlags: 0
@@ -26134,7 +26122,7 @@ MonoBehaviour:
   movementSpeed: 3
   targetRotation: {x: 90, y: 0, z: 0}
   rotationSpeed: 3
-  callbackFunction:
+  onAchieveTargetPosition:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &1870806882
@@ -26158,7 +26146,7 @@ MonoBehaviour:
   movementSpeed: 1
   targetRotation: {x: 90, y: 0, z: 0}
   rotationSpeed: 0.5
-  callbackFunction:
+  onAchieveTargetPosition:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &1870806883
@@ -26182,21 +26170,9 @@ MonoBehaviour:
   movementSpeed: 2
   targetRotation: {x: 25, y: 0, z: 0}
   rotationSpeed: 6
-  callbackFunction:
+  onAchieveTargetPosition:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GameplayHandler, Assembly-CSharp
-        m_MethodName: StartGameplay
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1870806884
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26275,21 +26251,9 @@ MonoBehaviour:
   movementSpeed: 2
   targetRotation: {x: -6, y: 0, z: 0}
   rotationSpeed: 2
-  callbackFunction:
+  onAchieveTargetPosition:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 51021679}
-        m_TargetAssemblyTypeName: UnityEngine.CanvasGroup, UnityEngine
-        m_MethodName: set_blocksRaycasts
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
+      m_Calls: []
 --- !u!4 &1870806887
 Transform:
   m_ObjectHideFlags: 0

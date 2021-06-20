@@ -19,6 +19,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -2133509655583763602, guid: 0b805b761b14e8e40816245f762f6ef2, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: -2412161988002444541, guid: 63dbc4c32b336e84e9686dbc513f51c5, type: 2}
     - target: {fileID: 6052081236796963825, guid: 0b805b761b14e8e40816245f762f6ef2, type: 3}
       propertyPath: m_UseGravity
       value: 0

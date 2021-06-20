@@ -35,6 +35,7 @@ namespace UI
 
         public void GoToMainMenu(MoveAndRotateToTargetBehaviour behaviourToEnable) => GoToScene(0, 0.4f, behaviourToEnable);
         public void GoShop(MoveAndRotateToTargetBehaviour behaviourToEnable) => GoToScene(2, 0.2f, behaviourToEnable);
+        public void GoToSettings(MoveAndRotateToTargetBehaviour behaviourToEnable) => GoToScene(3, 0.4f, behaviourToEnable);
         void GoToScene(int index, float delayTime, MoveAndRotateToTargetBehaviour behaviourToEnable)
         {
             behaviourToEnable.enabled = true;

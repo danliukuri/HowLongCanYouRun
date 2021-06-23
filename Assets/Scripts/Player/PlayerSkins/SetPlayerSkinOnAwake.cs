@@ -1,13 +1,14 @@
 ﻿using UnityEngine;
+using Utilities;
 
 public class SetPlayerSkinOnAwake : MonoBehaviour
 {
-    void Awake()
+    void Start()
     {
-        if (PlayerPrefs.HasKey("CurrentPlayerSkinJson"))
+        if (FileManager.DoesTheFileExist("CurrentPlayerSkinIndex"))
         {
-            PlayerSkin currentPlayerSkin = new PlayerSkin();
-            JsonUtility.FromJsonOverwrite(PlayerPrefs.GetString("CurrentPlayerSkinJson"), currentPlayerSkin);
+            int currentSkinIndex = int.Parse(FileManager.LoadStringFromFile("CurrentPlayerSkinIndex"));
+            PlayerSkin currentPlayerSkin = PlayerSkins.Get()[currentSkinIndex];
             GetComponent<MeshRenderer>().material = currentPlayerSkin.Material;
         }
     }

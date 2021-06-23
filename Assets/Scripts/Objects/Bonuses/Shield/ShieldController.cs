@@ -67,8 +67,12 @@ public class ShieldController : MonoBehaviour
         
         Destroy(burst, 1f);
 
+        // Check if player death
         if (!player.GetComponent<MeshRenderer>().enabled)
+        {
+            PlayerBonuses.HasShield = false;
             CauseBurst();
+        }  
     }
     void CauseBurst()
     {

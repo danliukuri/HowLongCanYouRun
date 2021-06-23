@@ -10,13 +10,16 @@ public class TrackSpawner : MonoBehaviour
     [SerializeField] Transform partsOfTheTrack;
     [SerializeField] GameObject startingTrackPart;
     [SerializeField] GameObject trackPart;
-    [SerializeField] Transform startingObstacleTrack;
 
     readonly List<ObjectSpawner> objectSpawners = new List<ObjectSpawner>();
     Quaternion trackPartRotation;
     Vector3 trackPartPosition;
     float trackPartLengthZ;
-    float previousTrackPartPositionZ;
+
+    /// <summary>
+    /// The position, when the player reaches which you need to create a part of the track
+    /// </summary>
+    float positionToSpawn;
     #endregion
 
     #region
@@ -24,33 +27,39 @@ public class TrackSpawner : MonoBehaviour
     {
         trackPartRotation = Quaternion.identity;
         Transform previousTrackPart = startingTrackPart.transform;
-        trackPartLengthZ = previousTrackPart.localScale.z;
-        trackPartPosition = new Vector3(0f, 0f, previousTrackPart.position.z);
+        trackPartLengthZ = trackPart.transform.localScale.z;
+        trackPartPosition = new Vector3(0f, 0f,
+            previousTrackPart.position.z + previousTrackPart.localScale.z / 2 + trackPartLengthZ / 2);
 
         GetComponents(objectSpawners);
     }
-    // Start is called before the first frame update
-    void Start()
+   
+    public void InitialTrackSpawn()
     {
-        for (int i = 0; i < objectSpawners.Count; i++)
-            objectSpawners[i].Spawn(startingObstacleTrack);
-        Spawn();
-        Spawn();
+        Spawn(3);
+        positionToSpawn = trackPartLengthZ;
     }
     // Update is called once per frame
     void Update()
     {
-        if (player.position.z > previousTrackPartPositionZ)
-          Spawn();
+        if (player.position.z > positionToSpawn)
+        {
+            Spawn();
+            positionToSpawn += trackPartLengthZ;
+        } 
     }
 
+    void Spawn(int count)
+    { 
+        for (int i = 0; i < count; i++)
+            Spawn();
+    }
     void Spawn()
     {
-        previousTrackPartPositionZ = trackPartPosition.z;
-        trackPartPosition.z += trackPartLengthZ;
         Transform currentTrackPart = Instantiate(trackPart, trackPartPosition, trackPartRotation, partsOfTheTrack).transform;
         for (int i = 0; i < objectSpawners.Count; i++)
             objectSpawners[i].Spawn(currentTrackPart);
+        trackPartPosition.z += trackPartLengthZ;
     }
     #endregion
 }

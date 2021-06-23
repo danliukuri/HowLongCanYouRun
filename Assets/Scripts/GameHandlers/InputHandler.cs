@@ -14,15 +14,20 @@ public static class InputHandler
             else if (touch.position.x < Screen.width / 2)
                 playerMovementDirection = Direction.Left;
         }
-#elif UNITY_STANDALONE
-        if (Input.GetKey(KeyCode.D))
-            playerMovementDirection = Direction.Right;
-        else if (Input.GetKey(KeyCode.A))
-            playerMovementDirection = Direction.Left;
+#elif UNITY_STANDALONE || UNITY_WEBGL
+        if (Input.GetButton("Horizontal"))
+        {
+            float horizontalAxisvalue = Input.GetAxis("Horizontal");
+            if (horizontalAxisvalue > 0)
+                playerMovementDirection = Direction.Right;
+            else if (horizontalAxisvalue < 0)
+                playerMovementDirection = Direction.Left;
+        }
 #endif
         return playerMovementDirection;
     }
 }
+
 public enum Direction
 {
     Right,

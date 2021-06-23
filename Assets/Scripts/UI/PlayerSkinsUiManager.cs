@@ -74,7 +74,9 @@ public class PlayerSkinsUiManager : MonoBehaviour
     {
         selectButtonGameObject.SetActive(false);
         buyButtonGameObject.SetActive(true);
-        numberOfCoinsAfterPurchase = PlayerPrefs.GetInt("NumberOfCoins") - PlayerSkinsController.GetCurrentlyDisplayedSkin().Price;
+        int numberOfCoins = FileManager.DoesTheFileExist("NumberOfCoins") ?
+            int.Parse(FileManager.LoadStringFromFile("NumberOfCoins")) : 0;
+        numberOfCoinsAfterPurchase = numberOfCoins - PlayerSkinsController.GetCurrentlyDisplayedSkin().Price;
         buyButton.interactable = numberOfCoinsAfterPurchase >= 0;
     }
 
@@ -86,7 +88,7 @@ public class PlayerSkinsUiManager : MonoBehaviour
 
         AudioManager.Invoke(() => AudioManager.Play("PlayerParticleTornado"), 0.6f);
         PlayerSkinsController.BuySkin();
-        PlayerPrefs.SetInt("NumberOfCoins", numberOfCoinsAfterPurchase);
+        FileManager.SaveStringToFile(numberOfCoinsAfterPurchase.ToString(), "NumberOfCoins");
         StartCoroutine(StaticFunctions.Invoke(() =>
         {
             cameraToTradingPosition.enabled = true;

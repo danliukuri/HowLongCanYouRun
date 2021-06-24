@@ -36,6 +36,12 @@ namespace UI
         public void GoToMainMenu(MoveAndRotateToTargetBehaviour behaviourToEnable) => GoToScene(0, 0.4f, behaviourToEnable);
         public void GoShop(MoveAndRotateToTargetBehaviour behaviourToEnable) => GoToScene(2, 0.2f, behaviourToEnable);
         public void GoToSettings(MoveAndRotateToTargetBehaviour behaviourToEnable) => GoToScene(3, 0.4f, behaviourToEnable);
+
+        public void TryToGoToTheAwardsScene()
+        {
+            int loadSceneIndex = CoinController.AwardCoinsCount > 0 ? 1 : 0;
+            StartCoroutine(StaticFunctions.Invoke(() => SceneTransitionManager.LoadScene(loadSceneIndex), 2f));
+        }
         void GoToScene(int index, float delayTime, MoveAndRotateToTargetBehaviour behaviourToEnable)
         {
             behaviourToEnable.enabled = true;

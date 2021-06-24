@@ -32,7 +32,7 @@ public class CoinController : MonoBehaviour
         animator.SetTrigger("CoinPick");
         Destroy(gameObject, 1f);
         AwardCoinsCount++;
-        UI.CoinsUIManager.CoinPick();
+        UI.CoinsUIManager.CoinPickUp();
         AudioManager.PlayInPosition("CoinPickUp", transform.position);
     }
     public static void ResetAwardCoinsCount() => AwardCoinsCount = 0;

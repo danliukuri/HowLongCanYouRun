@@ -13,23 +13,24 @@ namespace UI
         [SerializeField] TextMeshProUGUI numberOfCoinsTMP;
         [SerializeField] GameObject coinsDecoration;
         [Header("Gameplay menu")]
-        [SerializeField] TextMeshProUGUI coinCount;
+        [SerializeField] GameObject coinsCounter;
+        [SerializeField] TextMeshProUGUI coinsCounterTMP;
         static CoinsUIManager instance;
         #endregion
 
         #region Methods
         void Awake()
         {
-            if (instance == null)
-                instance = this;
+            instance = this; // No more than one instance of the class in the scene
+            
             if (numberOfCoinsTMP && coinsDecoration)
                 TryToOutputTheNumberOfCoins();
         }
 
         public void OutputAward()
         {
-            // Ran 5000 cubes and...
-            awardTMP.text = "You earned " + CoinController.AwardCoinsCount.ToString() + " coins, keep it up!!!";
+            awardTMP.text = "You ran " + RunDistanceController.CurrentRunDistance + " cubes! " +
+                "And you also earned " + CoinController.AwardCoinsCount + " coins!\nKeep it up)";
             SaveAwardCoins();
         }
         void SaveAwardCoins()
@@ -52,9 +53,12 @@ namespace UI
         }
 
         public static void UpdateOutputTheNumberOfCoins() => instance.TryToOutputTheNumberOfCoins();
-        public static void CoinPick()
+
+        public static void CoinPickUp()
         {
-            instance.coinCount.text = CoinController.AwardCoinsCount.ToString("000");
+            if (!instance.coinsCounter.activeSelf)
+                instance.coinsCounter.SetActive(true);
+            instance.coinsCounterTMP.text = CoinController.AwardCoinsCount.ToString("000");
         }
         #endregion
     }

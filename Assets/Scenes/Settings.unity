@@ -1339,6 +1339,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: SceneTranslition
       objectReference: {fileID: 0}
+    - target: {fileID: 1221732959011926588, guid: 349fafd7ea6383c4badca7ed1c5dccbb, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1221732959011926588, guid: 349fafd7ea6383c4badca7ed1c5dccbb, type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 1221732959011926588, guid: 349fafd7ea6383c4badca7ed1c5dccbb, type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 1080
+      objectReference: {fileID: 0}
     - target: {fileID: 1221732959011926589, guid: 349fafd7ea6383c4badca7ed1c5dccbb, type: 3}
       propertyPath: m_Camera
       value: 
